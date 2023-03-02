@@ -68,9 +68,14 @@ class Compra extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
+    // public function getItensCompras()
+    // {
+    //     return $this->hasMany(ItensCompra::class, ['id_compra' => 'id']);
+    // }
+
     public function getItensCompras()
     {
-        return $this->hasMany(ItensCompra::class, ['id_compra' => 'id']);
+        return $this->hasMany(ItensCompra::class, ['id_compra' => 'id'])->joinWith('produto');        
     }
 
     /**
@@ -83,8 +88,11 @@ class Compra extends \yii\db\ActiveRecord
         return $this->hasMany(Produto::class, ['id' => 'id_produto'])->viaTable('itens_compra', ['id_compra' => 'id']);
     }
 
-    public function getNomeproduto()
+    public function getProdutosCompras()
     {
-        return $this->hasOne(Produto::class, ['id' => 'id_produto'])->viaTable('itens_compra', ['id_compra' => 'id']);
+        $query = Compra::findOne($this->id);
+        $query = $query;
     }
+
+
 }

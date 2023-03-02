@@ -2,6 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
+use yii\grid\ActionColumn;
+use app\models\Compra;
+use yii\helpers\Url;
 
 /** @var yii\web\View $this */
 /** @var app\models\Cliente $model */
@@ -34,6 +38,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'endereco',
         ],
     ]) ?>
+
+    <h4>Compras</h4>
+
+
+<?= GridView::widget([
+        'dataProvider' => $dataProvider,        
+        'summary' => '',
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],            
+            'data',
+            'valortotal',         
+        ],
+    ]); ?>
 
     
 

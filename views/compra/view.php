@@ -51,13 +51,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'dataProvider' => $dataProvider,            
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],  
-                'id_produto',
-                [
-                'attribute'=>'produtos.nome',
-                'label'=>'Produto',
-            ],
-                'valor',   
-                'quantidade',             
+                'produto.nome',                
+                'quantidade',                
+                'valor',                                
                 ['class' => 'yii\grid\ActionColumn'],
             ],
     ]); ?>

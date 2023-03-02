@@ -66,4 +66,33 @@ class ClienteSearch extends Cliente
 
         return $dataProvider;
     }
+
+    public function searchCompras($params,$id)
+    {
+        $query = Cliente::find()->joinWith;
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'id' => $this->id,
+        ]);
+
+        $query->andFilterWhere(['like', 'nome', $this->nome])
+            ->andFilterWhere(['like', 'endereco', $this->endereco]);
+
+        return $dataProvider;
+    }
 }

@@ -11,5 +11,10 @@ class RelatoriosController extends \yii\web\Controller
        return $this->render('index');
    }
 
+   public function actionFaturamentocliente()
+   {
+        return $this->render('faturamentocliente');
+   }
+
 
 }

@@ -7,7 +7,7 @@ use app\models\ClienteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\data\ActiveDataProvider;
 /**
  * ClienteController implements the CRUD actions for Cliente model.
  */
@@ -54,9 +54,14 @@ class ClienteController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
-    {
+    {        
+        $dataProvider = new ActiveDataProvider([
+            'query' => $this->findModel($id)->getCompras(),
+        ]);
+        
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($id),            
+            'dataProvider' => $dataProvider,
         ]);
     }
 

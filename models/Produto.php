@@ -55,7 +55,7 @@ class Produto extends \yii\db\ActiveRecord
      */
     public function getCompras()
     {
-        return $this->hasMany(Compra::class, ['id' => 'id_compra'])->viaTable('itens_compra', ['id_produto' => 'id']);
+        return $this->hasMany(Compra::class, ['id' => 'id_compra'])->viaTable('itenscompra', ['id_produto' => 'id']);
     }
 
     /**

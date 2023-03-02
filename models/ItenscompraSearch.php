@@ -38,9 +38,9 @@ class ItenscompraSearch extends Itenscompra
      *
      * @return ActiveDataProvider
      */
-    public function search($params,$id_compra)
+    public function search($params)
     {
-        $query = Itenscompra::find()->where(['id_compra' => $id_compra]);
+        $query = Itenscompra::find();
 
         // add conditions that should always apply here
 

@@ -8,6 +8,7 @@ use app\models\ItensCompraSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 use Yii;
 
 /**
@@ -18,6 +19,7 @@ class CompraController extends Controller
     /**
      * @inheritDoc
      */
+    
     public function behaviors()
     {
         return array_merge(
@@ -57,8 +59,9 @@ class CompraController extends Controller
      */
     public function actionView($id)
     {        
-        $searchModel = new ItensCompraSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $id);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $this->findModel($id)->getItensCompras(),
+        ]);
                 
         return $this->render('view', [
             'model' => $this->findModel($id),

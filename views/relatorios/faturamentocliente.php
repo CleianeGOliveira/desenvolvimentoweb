@@ -15,9 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
    <h1><?= Html::encode($this->title) ?></h1>
 
    <p><?= Html::a('Faturamento por cliente', ['faturamentocliente']) ?></p>
-   <p><?= Html::a('Faturamento por cliente', ['faturamentocliente']) ?></p>
-   <p><?= Html::a('Faturamento por cliente', ['faturamentocliente']) ?></p>
-   <p><?= Html::a('Faturamento por cliente', ['faturamentocliente']) ?></p>
+   
 
 
 </div>
