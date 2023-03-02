@@ -48,7 +48,7 @@ class Compra extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'data' => 'Data',
-            'valortotal' => 'Valortotal',
+            'valortotal' => 'Valor Total',
             'cliente_fk' => 'Cliente Fk',
         ];
     }

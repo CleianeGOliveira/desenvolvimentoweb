@@ -47,8 +47,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'summary' => '',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],            
-            'data',
-            'valortotal',         
+            [
+                'attribute'=> 'data',
+                'format' => ['date', 'php:d/m/Y'],
+            ],
+            [
+                'attribute'=> 'valortotal',
+                'format' => ['currency'],
+            ],         
         ],
     ]); ?>
 
