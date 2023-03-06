@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
 use yii\grid\ActionColumn;
@@ -9,7 +10,7 @@ use app\controllers\ActiveDataProvider;
 /** @var yii\web\View $this */
 /** @var app\models\Compra $model */
 
-$this->title = $model->id;
+$this->title = $model->cliente->nome.' - Compra: '.$model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Compras', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -54,7 +55,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'produto.nome',                
                 'quantidade',                
                 'valor',                                
-                ['class' => 'yii\grid\ActionColumn'],
+                [
+                    'class' => 'yii\grid\ActionColumn',
+                    'template' => '{update} {delete}',
+                    'urlCreator' => function ($action, $model, $key, $index) {
+                        return Url::to(['itenscompra/'.$action, 'id_compra' => $model->id_compra, 'id_produto' => $model->id_produto]);
+                    }
+                ],
             ],
     ]); ?>
 </div>

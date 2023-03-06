@@ -47,7 +47,7 @@ class CompraSearch extends Compra
      */
     public function search($params)
     {
-        $query = Compra::find();
+        $query = Compra::find()->orderBy(['data' => SORT_DESC]);
 
         // add conditions that should always apply here
 
@@ -55,7 +55,7 @@ class CompraSearch extends Compra
             'query' => $query,
         ]);
 
-        $query->joinWith(['cliente']);
+        $query->joinWith(['cliente'])->orderBy('data');
         $dataProvider->sort->attributes['cliente.nome'] = [
             'asc' => ['cliente.nome' => SORT_ASC],
             'desc' => ['cliente.nome' => SORT_DESC],

@@ -62,7 +62,12 @@ class CompraController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => $this->findModel($id)->getItensCompras(),
         ]);
-                
+        $dataProvider->sort->attributes['produto.nome'] = [
+            'asc' => ['produto.nome' => SORT_ASC],
+            'desc' => ['produto.nome' => SORT_DESC],
+        ];
+        
+         
         return $this->render('view', [
             'model' => $this->findModel($id),
             'dataProvider' => $dataProvider,

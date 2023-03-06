@@ -53,6 +53,6 @@ class Cliente extends \yii\db\ActiveRecord
      */
     public function getCompras()
     {
-        return $this->hasMany(Compra::class, ['cliente_fk' => 'id']);
+        return $this->hasMany(Compra::class, ['cliente_fk' => 'id'])->orderBy('data DESC');
     }
 }

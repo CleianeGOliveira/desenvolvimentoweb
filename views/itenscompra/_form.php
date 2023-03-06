@@ -13,9 +13,7 @@ use app\models\Produto;
 
 <div class="itenscompra-form">
 
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'id_compra')->hiddenInput(['value'=>$id_compra])->label(false) ?>   
+    <?php $form = ActiveForm::begin(); ?>    
 
     <?= $form->field($model, 'id_produto')->
        dropDownList(ArrayHelper::map(Produto::find()
@@ -23,7 +21,6 @@ use app\models\Produto;
            ->all(),'id','nome'),
            ['prompt' => 'Selecione um produto'] )
     ?>
-
 
     <?= $form->field($model, 'valor')->textInput(['maxlength' => true]) ?>
 

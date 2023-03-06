@@ -30,6 +30,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <?php $this->beginBody() ?>
 
 <header id="header">
+    
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,

@@ -49,7 +49,7 @@ class Compra extends \yii\db\ActiveRecord
             'id' => 'ID',
             'data' => 'Data',
             'valortotal' => 'Valor Total',
-            'cliente_fk' => 'Cliente Fk',
+            'cliente_fk' => 'Cliente',
         ];
     }
 
@@ -73,9 +73,9 @@ class Compra extends \yii\db\ActiveRecord
     //     return $this->hasMany(ItensCompra::class, ['id_compra' => 'id']);
     // }
 
-    public function getItensCompras()
+    public function getItenscompras()
     {
-        return $this->hasMany(ItensCompra::class, ['id_compra' => 'id'])->joinWith('produto');        
+        return $this->hasMany(Itenscompra::class, ['id_compra' => 'id'])->joinWith('produto');        
     }
 
     /**
@@ -87,12 +87,5 @@ class Compra extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Produto::class, ['id' => 'id_produto'])->viaTable('itens_compra', ['id_compra' => 'id']);
     }
-
-    public function getProdutosCompras()
-    {
-        $query = Compra::findOne($this->id);
-        $query = $query;
-    }
-
 
 }

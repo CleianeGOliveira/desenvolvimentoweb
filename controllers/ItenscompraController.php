@@ -69,6 +69,7 @@ class ItenscompraController extends Controller
     public function actionCreate($id)
     {
         $model = new Itenscompra();
+        $model->id_compra = $id;
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -79,8 +80,7 @@ class ItenscompraController extends Controller
         }
 
         return $this->render('create', [
-            'model' => $model,
-            'id_compra' =>$id,
+            'model' => $model,            
         ]);
     }
 
@@ -97,7 +97,7 @@ class ItenscompraController extends Controller
         $model = $this->findModel($id_compra, $id_produto);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id_compra' => $model->id_compra, 'id_produto' => $model->id_produto]);
+            return $this->redirect(['compra/view', 'id' => $model->id_compra]);
         }
 
         return $this->render('update', [
@@ -117,7 +117,7 @@ class ItenscompraController extends Controller
     {
         $this->findModel($id_compra, $id_produto)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['compra/view','id' => $id_compra]);        
     }
 
     /**
